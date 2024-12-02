@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes de Asistencia - Administrador</title>
+    <link rel="stylesheet" href="../../recursos/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="../../recursos/img/logo.png" alt="Logo ULEAM" class="logo">
+            <h1>Reportes de Asistencia</h1>
+            <button class="user-menu-btn" id="userMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="user-menu" id="userMenu">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="users.html">Gestionar Usuarios</a>
+                <a href="reports.html">Ver Reportes</a>
+                <a href="../../logout.html">Cerrar Sesión</a>
+            </div>
+        </header>
+
+        <main>
+            <main>
+                <div class="container">
+                    <div class="reports">
+                        <h2>Asistencia por Curso</h2>
+                        <p>Seleccione el curso para ver los reportes de asistencia:</p>
+                        
+                        <div class="form-group-center">
+                            <select id="courseSelect">
+                                <option value="">Seleccione un curso</option>
+                                <!-- Lista de cursos disponibles -->
+                            </select>
+                            <button class="btn" id="downloadReport">Descargar Reporte</button>
+                        </div>
+            
+                        <div id="attendanceReport">
+                            <!-- Reporte de asistencia en formato tabla o gráfico -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 ULEAM. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+    <script src="../../recursos/js/admin.js"></script>
+</body>
+
+</html>

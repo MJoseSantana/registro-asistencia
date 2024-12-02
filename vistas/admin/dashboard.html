@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Administración</title>
+    <link rel="stylesheet" href="../../recursos/css/admin.css">
+    <script src="../../recursos/js/admin.js" defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Encabezado -->
+        <header>
+            <img src="../../recursos/img/logo.png" alt="Logo ULEAM" class="logo">
+            <h1>Dashboard de Administración</h1>
+            <button class="user-menu-btn">☰</button>
+            <div class="user-menu" id="user-menu">
+                <a href="../admin/dashboard.html">Dashboard</a>
+                <a href="users.html">Gestionar Usuarios</a>
+                <a href="reports.html">Ver Reportes</a>
+                <a href="../../logout.html">Cerrar Sesión</a>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main>
+            <!-- Gestión de Usuarios -->
+            <section class="section-container">
+                <h2>Gestión de Usuarios</h2>
+                <p>Controla y administra los usuarios registrados en la plataforma.</p>
+                <a href="users.html" style="text-decoration: none;">
+                    <button>Gestionar Usuarios</button>
+                </a>
+            </section>
+
+            <!-- Exportar Reporte de Asistencia -->
+            <section class="section-container">
+                <h2>Exportar Reporte de Asistencia</h2>
+                <form id="exportForm">
+                    <label for="professor">Selecciona un profesor:</label>
+                    <select id="professor" name="professor" required>
+                        <option value="" disabled selected>Seleccione un profesor</option>
+                        <option value="profesor1">Profesor 1</option>
+                        <option value="profesor2">Profesor 2</option>
+                    </select>
+
+                    <label for="course">Selecciona un curso:</label>
+                    <select id="course" name="course" required>
+                        <option value="" disabled selected>Seleccione un curso</option>
+                        <option value="curso1">Curso 1</option>
+                        <option value="curso2">Curso 2</option>
+                    </select>
+
+                    <label for="date">Selecciona una fecha:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <button type="submit">Exportar Reporte</button>
+                </form>
+            </section>
+
+            <!-- Tabla de Reportes -->
+            <section class="section-container">
+                <h2>Historial de Reportes Generados</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Profesor</th>
+                            <th>Curso</th>
+                            <th>Reporte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024-11-20</td>
+                            <td>Profesor 1</td>
+                            <td>Curso 1</td>
+                            <td><a href="#">Descargar</a></td>
+                        </tr>
+                        <tr>
+                            <td>2024-11-21</td>
+                            <td>Profesor 2</td>
+                            <td>Curso 2</td>
+                            <td><a href="#">Descargar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2024 ULEAM. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

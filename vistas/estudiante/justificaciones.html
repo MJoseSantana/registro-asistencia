@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Justificaciones</title>
+    <link rel="stylesheet" href="../../recursos/css/student.css">
+    <script src="../../recursos/js/student.js" defer></script>
+    <style>
+        /* Estilos del formulario */
+        .new-justification {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .new-justification h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .new-justification form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .new-justification label {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .new-justification input,
+        .new-justification select,
+        .new-justification textarea,
+        .new-justification button {
+            font-size: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .new-justification input:focus,
+        .new-justification select:focus,
+        .new-justification textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+        }
+
+        .new-justification button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .new-justification button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <img src="../../recursos/img/logo.png" alt="Logo ULEAM">
+        <h1>Mis Justificaciones</h1>
+        <button class="user-menu-btn">☰</button>
+        <div class="user-menu" id="user-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="asistencias.html">Mis Asistencias</a>
+            <a href="justificaciones.html">Mis Justificaciones</a>
+            <a href="../../logout.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="justifications-main-content">
+        <h2>Solicitudes de Justificación</h2>
+
+        <!-- Tabla de justificaciones -->
+        <section class="justifications-list">
+            <table id="justifications-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Curso</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">Cargando justificaciones...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Formulario para nueva justificación -->
+        <section class="new-justification">
+            <h3>Solicitar una nueva justificación</h3>
+            <form id="justificationForm" enctype="multipart/form-data">
+                <!-- Selector de curso -->
+                <label for="course">Curso:</label>
+                <select id="course" name="course" required>
+                    <option value="" disabled selected>Selecciona un curso</option>
+                </select>
+
+                <!-- Fecha -->
+                <label for="date">Fecha de la clase:</label>
+                <input type="date" id="date" name="date" required>
+
+                <!-- Motivo -->
+                <label for="reason">Motivo:</label>
+                <textarea id="reason" name="reason" rows="4" placeholder="Describe el motivo de la justificación" required></textarea>
+
+                <!-- Adjuntar archivo -->
+                <label for="attachment">Adjuntar archivo (opcional):</label>
+                <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.ppt,.pptx">
+
+                <!-- Botón de envío -->
+                <button type="submit">Enviar Justificación</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 ULEAM - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Cargar cursos desde el JSON
+        document.addEventListener('DOMContentLoaded', () => {
+            const courseSelect = document.getElementById('course');
+            const jsonData = {
+                estudiante: {
+                    asistencias: [
+                        { curso: "Matemáticas" },
+                        { curso: "Ciencias" },
+                        { curso: "Historia" },
+                        { curso: "Lengua y Literatura" },
+                        { curso: "Educación Física" }
+                    ]
+                }
+            };
+
+            // Agregar opciones al select
+            jsonData.estudiante.asistencias.forEach(({ curso }) => {
+                const option = document.createElement('option');
+                option.value = curso;
+                option.textContent = curso;
+                courseSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>

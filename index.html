@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control de Asistencia</title>
+    <link rel="stylesheet" href="recursos/css/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        /* Estilos para el menú lateral */
+        .menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100%;
+            transition: 0.3s;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .menu-sidebar.show {
+            left: 0;
+        }
+
+        .menu-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .menu-sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para las modales */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal.show {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        /* Estilos para el botón del menú lateral */
+        .menu-toggle-btn {
+            background-color: #004d70;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-toggle-btn:hover {
+            background-color: #00334d;
+        }
+
+        .btn {
+            background-color: #004d70;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 5px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #00334d;
+        }
+
+        .intro {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .advantages-table,
+        .objectives-table {
+            margin-top: 20px;
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .advantages-table th,
+        .objectives-table th {
+            background-color: #004d70;
+            color: white;
+            padding: 10px;
+        }
+
+        .advantages-table td,
+        .objectives-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .advantages-table tr:nth-child(even),
+        .objectives-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="wrapper">
+        <!-- Encabezado -->
+        <header>
+            <img src="recursos/img/logo.png" alt="Logo ULEAM" class="logo">
+            <h1>{{ title }}</h1>
+            <button @click="toggleMenu" class="menu-toggle-btn">☰</button>
+        </header>
+
+        <!-- Menú lateral (oculto por defecto) -->
+        <div :class="['menu-sidebar', { show: showMenu }]">
+            <ul>
+                <li><a href="#" @click="openModal('modalLogin')">Iniciar Sesión</a></li>
+                <li><a href="#" @click="openModal('modalRegister')">Registrar</a></li>
+                <li><a href="#" @click="openModal('modalInfo')">Más Información</a></li>
+                <li><a href="#" @click="openModal('modalSocial')">Redes Sociales</a></li>
+                <li><a href="#" @click="openModal('modalHelp')">Ayuda</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido Principal -->
+        <main>
+            <div class="intro">
+                <p>{{ welcomeMessage }}</p>
+            </div>
+
+            <!-- Sección de ventajas del sistema -->
+            <h2>Ventajas del Sistema</h2>
+            <table class="advantages-table">
+                <tr>
+                    <th>Ventaja</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>Gestión en tiempo real</td>
+                    <td>Permite registrar y revisar las asistencias de manera instantánea.</td>
+                </tr>
+                <tr>
+                    <td>Fácil de usar</td>
+                    <td>Interfaz intuitiva para estudiantes y docentes, sin complicaciones.</td>
+                </tr>
+                <tr>
+                    <td>Accesibilidad</td>
+                    <td>Acceso desde cualquier dispositivo con conexión a Internet.</td>
+                </tr>
+            </table>
+
+            <!-- Objetivo del sistema -->
+            <h2>Objetivo del Sistema</h2>
+            <table class="objectives-table">
+                <tr>
+                    <th>Objetivo</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>Control de Asistencias</td>
+                    <td>Registrar y monitorear la asistencia de los estudiantes en tiempo real.</td>
+                </tr>
+                <tr>
+                    <td>Justificación de Ausencias</td>
+                    <td>Permitir a los estudiantes justificar sus ausencias de manera sencilla.</td>
+                </tr>
+            </table>
+
+            <!-- Botones de Acción -->
+            <div class="acciones">
+                <a href="#" @click="openModal('modalLogin')" class="btn">Iniciar Sesión</a>
+                <a href="#" @click="openModal('modalRegister')" class="btn">Registrar</a>
+            </div>
+        </main>
+
+        <!-- Ventana Modal: Iniciar Sesión -->
+        <div :class="['modal', { show: activeModal === 'modalLogin' }]">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>Iniciar Sesión</h2>
+                <p>Ingresa tus datos para acceder al sistema de control de asistencia.</p>
+                <form @submit.prevent="redirectToLogin">
+                    <input type="email" placeholder="Correo electrónico" required><br>
+                    <input type="password" placeholder="Contraseña" required><br>
+                    <button type="submit" class="btn">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ventana Modal: Registrar -->
+        <div :class="['modal', { show: activeModal === 'modalRegister' }]">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>Registrar Cuenta</h2>
+                <p>Regístrate para poder gestionar tu asistencia.</p>
+                <form @submit.prevent="redirectToRegister">
+                    <input type="text" placeholder="Nombre completo" required><br>
+                    <input type="email" placeholder="Correo electrónico" required><br>
+                    <input type="password" placeholder="Contraseña" required><br>
+                    <button type="submit" class="btn">Registrar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ventana Modal: Más Información -->
+        <div :class="['modal', { show: activeModal === 'modalInfo' }]">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>Más Información</h2>
+                <p>Este sistema permite gestionar la asistencia de los estudiantes de la ULEAM, simplificando el proceso tanto para los docentes como para los estudiantes.</p>
+            </div>
+        </div>
+
+        <!-- Ventana Modal: Redes Sociales -->
+        <div :class="['modal', { show: activeModal === 'modalSocial' }]">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>Redes Sociales de ULEAM</h2>
+                <ul>
+                    <li><a href="https://www.facebook.com/ULEAM" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/ULEAM" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.instagram.com/uleam" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.uleam.edu.ec" target="_blank">Sitio Oficial</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Ventana Modal: Ayuda -->
+        <div :class="['modal', { show: activeModal === 'modalHelp' }]">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>Ayuda</h2>
+                <p>Si tienes problemas con el acceso o el uso del sistema, por favor comunícate con el soporte técnico a través de los canales oficiales.</p>
+                <p>Teléfono: +593 5 1234567</p>
+                <p>Email: soporte@uleam.edu.ec</p>
+            </div>
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2024 ULEAM. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Sistema de Control de Asistencia',
+                welcomeMessage: 'Bienvenido al sistema de control de asistencia para estudiantes de la Universidad Laica Eloy Alfaro de Manabí.',
+                showMenu: false,  // Controla si el menú está visible o no
+                activeModal: null  // Controla qué modal está activo
+            },
+            methods: {
+                // Toggle del menú lateral
+                toggleMenu() {
+                    this.showMenu = !this.showMenu;
+                },
+                // Abrir un modal específico
+                openModal(modalName) {
+                    this.activeModal = modalName;
+                },
+                // Cerrar el modal
+                closeModal() {
+                    this.activeModal = null;
+                },
+                // Redirigir a la página de login
+                redirectToLogin() {
+                    console.log("Redirigiendo a la página de login...");
+                    // Aquí se puede redirigir a la página de login real
+                    this.closeModal();
+                },
+                // Redirigir a la página de registro
+                redirectToRegister() {
+                    console.log("Redirigiendo a la página de registro...");
+                    // Aquí se puede redirigir a la página de registro real
+                    this.closeModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

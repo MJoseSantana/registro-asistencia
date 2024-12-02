@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia</title>
+    <link rel="stylesheet" href="../../recursos/css/teacher.css">
+    <script src="../../recursos/js/teacher.js" defer></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <img src="../../recursos/img/logo.png" alt="Logo ULEAM">
+        <h1>Asistencia</h1>
+        <button class="user-menu-btn" onclick="toggleUserMenu()">☰</button>
+        <div class="user-menu" id="user-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="asistencia.html">Asistencia</a>
+            <a href="justificaciones.html">Justificaciones</a>
+            <a href="../../logout.html">Cerrar sesión</a>
+        </div>
+    </header>
+    
+    <div class="wrapper">
+        <!-- Contenido Principal -->
+        <main class="container">
+            <h1>Gestión de Asistencia</h1>
+            <form class="form-group-center">
+                <label for="curso">Seleccionar Curso y Paralelo:</label>
+                <select id="curso" name="curso">
+                    <option value="Seleccione">Seleccione</option>
+                    <!-- Agregar más opciones de curso según correspondan -->
+                </select>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estudiante</th>
+                        <th>Asistencia</th>
+                        <th>Justificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Generar filas dinámicamente con JS -->
+                </tbody>
+            </table>
+            <button class="btn">Guardar Asistencia</button>
+            <button class="btn">Exportar a PDF</button>
+            <button class="btn">Exportar a Excel</button>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>© 2024 ULEAM - Todos los derechos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>

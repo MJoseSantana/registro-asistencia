@@ -1,0 +1,224 @@
+/* Estilo base para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif; /* Tipo de fuente para todo el documento */
+    margin: 0; /* Sin margen exterior */
+    padding: 0; /* Sin relleno interior */
+    background-color: #f4f4f4; /* Color de fondo claro para el cuerpo */
+    color: #333; /* Color del texto en gris oscuro */
+}
+
+/* Contenedor principal que envuelve el contenido */
+.wrapper {
+    min-height: 100vh; /* Ocupa al menos la altura de la ventana */
+    display: flex;
+    flex-direction: column; /* Alinea elementos en columna */
+}
+
+/* Estilo para el encabezado de la página */
+header {
+    background-color: #003366; /* Fondo oscuro */
+    color: white; /* Texto en blanco */
+    padding: 40px; /* Espacio interno */
+    display: flex; /* Alinea los elementos en fila */
+    align-items: center; /* Alinea verticalmente logo y título */
+    justify-content: center; /* Alinea el título en el centro */
+    position: relative; /* Permite ajustes finos de posición */
+}
+
+/* Estilo para el logo en el encabezado */
+.logo {
+    position: absolute; /* Posiciona independientemente de otros elementos */
+    left: 20px; /* Espacio desde la izquierda */
+    max-width: 300px; /* Ancho máximo para el logo */
+    height: auto; /* Mantiene proporciones */
+}
+
+/* Estilo para los títulos h1 */
+h1 {
+    margin: 0; /* Elimina márgenes para centrado preciso */
+    text-align: center; /* Centra el texto */
+    flex: 1; /* Permite que el h1 ocupe espacio central */
+}
+
+/* Estilo para el contenido principal */
+main {
+    padding: 20px; /* Espacio interno alrededor del contenido principal */
+    flex: 1; /* Ocupa espacio restante entre header y footer */
+}
+
+/* Estilo para las acciones (botones) en la página principal */
+.acciones {
+    display: flex; /* Utiliza flexbox */
+    justify-content: center; /* Centra botones horizontalmente */
+    gap: 20px; /* Espacio entre botones */
+}
+
+/* Estilo base para los botones */
+.btn {
+    display: inline-block; /* Bloque en línea */
+    padding: 10px 20px; /* Espacio interno */
+    background-color: #0055a5; /* Fondo azul */
+    color: white; /* Texto en blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto hover para los botones */
+.btn:hover {
+    background-color: #003366; /* Fondo más oscuro en hover */
+}
+
+/* Estilo para los formularios */
+.formulario {
+    max-width: 400px; /* Ancho máximo */
+    margin: 0 auto; /* Centra horizontalmente */
+    background: white; /* Fondo blanco */
+    padding: 20px; /* Espacio interno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+    margin-bottom: 15px; /* Espacio inferior */
+}
+
+/* Estilo para etiquetas de campos de entrada */
+label {
+    display: block; /* Ocupa línea completa */
+    margin-bottom: 5px; /* Espacio inferior */
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Ocupa 100% del contenedor */
+    padding: 10px; /* Espacio interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: border-color 0.3s; /* Transición suave para cambios de borde */
+}
+
+/* Estilo para los campos con error */
+input.error {
+    border: 1px solid #d9534f; /* Rojo para campos con error */
+}
+
+/* Estilo para los campos con éxito */
+input.success {
+    border: 1px solid #5bc0de; /* Verde para campos con éxito */
+}
+
+/* Estilo para los mensajes de error */
+.message-error {
+    color: #d9534f; /* Rojo para los mensajes de error */
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none; /* Ocultos por defecto */
+}
+
+/* Estilo para los mensajes de éxito */
+.message-success {
+    color: #5bc0de; /* Verde para los mensajes de éxito */
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none; /* Ocultos por defecto */
+}
+
+/* Estilo para botones submit */
+button[type="submit"] {
+    width: 100%; /* Ocupa 100% del contenedor */
+    padding: 10px; /* Espacio interno */
+    background-color: #0055a5; /* Fondo azul */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia cursor a mano */
+}
+
+/* Efecto hover para submit */
+button[type="submit"]:hover {
+    background-color: #003366; /* Fondo más oscuro */
+}
+
+/* Estilo para el pie de página */
+footer {
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Espacio interno */
+    background-color: #003366; /* Fondo oscuro */
+    color: white; /* Texto en blanco */
+    width: 100%; /* Ocupa todo el ancho */
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilo para los mensajes de error */
+.message-error {
+    color: #d9534f; /* Rojo para los mensajes de error */
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none; /* Ocultos por defecto */
+}
+
+/* Estilo para los campos con error */
+input.error {
+    border: 1px solid #d9534f; /* Rojo para campos con error */
+}
+
+/* Estilo para los campos con éxito */
+input.success {
+    border: 1px solid #5bc0de; /* Verde para campos con éxito */
+}
+
+/* Estilos para el botón del menú de usuario */
+.user-menu-btn {
+    background-color: #0055a5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+.user-menu-btn:hover {
+    background-color: #003366;
+}
+
+/* Estilo para el menú desplegable de usuario */
+.user-menu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #003366;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 10px;
+    width: 200px;
+}
+
+.user-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.user-menu a:hover {
+    background-color: #1abc9c;
+}
+
+/* Asegura que el menú se despliegue debajo del botón */
+.user-menu a:last-child {
+    margin-bottom: 0;
+}
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Profesor</title>
+    <link rel="stylesheet" href="../../recursos/css/teacher.css">
+    <script src="../../recursos/js/teacher.js" defer></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <img src="../../recursos/img/logo.png" alt="Logo ULEAM">
+        <h1>Dashboard Profesor</h1>
+        <button class="user-menu-btn">☰</button>
+        <div class="user-menu" id="user-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="asistencia.html">Asistencia</a>
+            <a href="justificaciones.html">Justificaciones</a>
+            <a href="../../logout.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal del Dashboard -->
+    <main class="dashboard-main-content">
+        <h2>Bienvenido, Profesor</h2>
+        <p>Selecciona un curso para gestionar la asistencia o las justificaciones.</p>
+
+        <!-- Cursos asignados al profesor -->
+        <section class="card">
+            <h3>Mis Cursos</h3>
+            <div id="courses-list">
+                <!-- Los cursos asignados al profesor se insertarán aquí dinámicamente -->
+                <p>Cargando cursos...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 ULEAM - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
